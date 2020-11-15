@@ -7,16 +7,21 @@ import org.springframework.data.annotation.Id;
 import java.io.Serializable;
 import java.util.UUID;
 
-@Document(collection = "messages")
+@Document
 public class Message {
 
     @Id
-    private String id;
+    private final String id;
     private final String text;
 
-    public Message(String text) {
+//    public Message(String text) {
+//        this.text = text;
+//        setId(UUID.randomUUID().toString());
+//    }
+
+    public Message(String id, String text) {
         this.text = text;
-        setId(UUID.randomUUID().toString());
+        this.id = id;
     }
 
     public String getText() {
@@ -27,9 +32,9 @@ public class Message {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+//    public void setId(String id) {
+//        this.id = id;
+//    }
 
     @Override
     public String toString() {

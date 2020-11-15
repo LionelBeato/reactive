@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import works.lionel.reactive.model.Message;
 import java.util.UUID;
 
-@Repository
+//@Repository
 public interface MessageRepository extends ReactiveMongoRepository<Message, String> {
 }
