@@ -1,28 +1,41 @@
 package works.lionel.reactive.model;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.UUID;
 
+@Document(collection = "messages")
 public class Message {
 
     @Id
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @GeneratedValue(generator = "uuid2")
-    @Column(name = "id", updatable = false, nullable = false, unique=true, columnDefinition = "BINARY(16)")
-    private final UUID uuid;
+    private String id;
     private final String text;
 
-    public Message(UUID uuid, String text) {
-        this.uuid = uuid;
+    public Message(String text) {
         this.text = text;
+        setId(UUID.randomUUID().toString());
     }
 
     public String getText() {
         return text;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id='" + id + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }
