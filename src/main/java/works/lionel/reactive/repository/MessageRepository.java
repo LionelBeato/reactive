@@ -11,10 +11,8 @@ import reactor.core.publisher.Flux;
 import works.lionel.reactive.model.Message;
 import java.util.UUID;
 
-//@Repository
+@Repository
 public interface MessageRepository extends ReactiveMongoRepository<Message, String> {
 
-    @Tailable
-    Flux<Message> findWithTailableCursorBy();
 
 }

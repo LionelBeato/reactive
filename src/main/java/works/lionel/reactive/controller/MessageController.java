@@ -40,7 +40,6 @@ public class MessageController {
         return messageRepository.findById(id);
     }
 
-//    @GetMapping(path="/all", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     @GetMapping(value = "/all", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     private Flux<Message> getAllMessages() {
         return messageRepository.findAll().delayElements(Duration.ofMillis(500));
